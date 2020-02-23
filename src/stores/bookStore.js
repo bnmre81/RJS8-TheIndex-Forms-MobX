@@ -17,6 +17,19 @@ class BookStore {
     } catch (err) {}
   };
 
+  addBook = async (newBook, author) => {
+    newBook.authors = [author.id];
+    try {
+      const res = await instance.post("books/", newBook);
+      const book = res.data;
+      this.books.push(book);
+      author.books.push(book.id);
+      console.log("BOOK", book);
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  };
+
   get filteredBooks() {
     return this.books.filter(book => {
       return book.title.toLowerCase().includes(this.query.toLowerCase());

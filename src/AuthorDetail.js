@@ -1,6 +1,7 @@
 import React from "react";
 
 // Components
+import AddBookModal from "./AddBookModal";
 import BookTable from "./BookTable";
 
 // Stores
@@ -25,6 +26,7 @@ const AuthorDetail = props => {
         />
       </div>
       <BookTable books={books} />
+      <AddBookModal author={author} />
     </div>
   );
 };
